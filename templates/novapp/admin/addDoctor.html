@@ -1,0 +1,124 @@
+{% extends 'novapp/admin/index.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title">Add Doctor</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form method='post' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>First Name <span class="text-danger">*</span></label>
+                                
+                                {% render_field userform.first_name %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                {% render_field userform.last_name %}
+                                {% comment %} <input class="form-control" type="text"> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Username <span class="text-danger">*</span></label>
+                                
+                                {% render_field userform.username %}
+                                <span class="text-danger">{{userform.username.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email <span class="text-danger">*</span></label>
+                                {% render_field userform.email %}
+                                <span class="text-danger">{{userform.email.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Password  <span class="text-danger">*</span> </label>
+                                {% render_field userform.password %}
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                {% render_field doctorform.dob type='date' class="form-control" %}
+                              
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group gender-select">
+                                <label class="gen-label">Gender:</label>
+                                {% comment %} <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="gender" class="form-check-input">Male
+                                    </label>
+                                </div> {% endcomment %}
+                                
+                                {% render_field doctorform.gender class="form-check-inline ml-3 " %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        {% render_field doctorform.address class='form-control' %}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Mobile No </label>
+                                {% comment %} <input class="form-control" type="text"> {% endcomment %}
+                                {% render_field doctorform.mobileno class="form-control " %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Avatar</label>
+                                <div class="profile-upload">
+                                    <div class="upload-img">
+                                        <img alt="" src="{% static 'novapp/admin/img/user.jpg' %}">
+                                    </div>
+                                    <div class="upload-input">
+                                        {% render_field doctorform.profile_pic %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Department  </label>
+                           
+                            {% render_field doctorform.department class="form-control select" %}
+                        </div>
+                    </div>
+                    <div class="m-t-20 text-center">
+                        <button class="btn btn-primary submit-btn">Create Doctor</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock content %}
+

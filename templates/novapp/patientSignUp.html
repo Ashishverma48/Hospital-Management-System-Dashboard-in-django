@@ -1,0 +1,48 @@
+{% extends 'novapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+<div class="bg-dark p-2 text-white text-center">
+  <h1>Patient Registration Form </h1>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+  <div class="p-4 row d-flex flex-wrap w-100 gap-3 m-4"> 
+
+    <div class="form-group col-12 col-md-9 col-lg-7 col-xl-6">
+      {% for user in patientuserform %}
+      {{user.label_tag}}
+      {{user}}
+      
+      {% endfor %}
+    </div>
+
+    <div class="form-group col-12 col-md-9 col-lg-7 col-xl-6">
+      {% for user in patientform %}
+    <div class="inputs">
+      {{user.label_tag}}
+    {{user}}
+    <span class="text-danger py-2">{{user.errors}}</span>
+    </div>
+    
+    {% endfor %}
+    </div>
+
+
+    {% for frm in patientuserform.non_field_errors %}
+    <span class="text-danger">{{frm}}</span>
+    {% endfor %}
+
+      </div>
+      <button class="btn btn-success">Register</button>
+      <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'login' %}"
+        class="fw-bold text-body"><u>Login here</u></a></p>
+
+</form>
+
+</div>
+
+{% endblock content %}
