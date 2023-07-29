@@ -94,3 +94,21 @@ class PatientForm(forms.ModelForm):
             # frm.widget.attrs['class']='form-control'
             frm.widget.attrs['placeholder']=frm.label
 
+
+class AppointmentForm(forms.ModelForm):
+    doctorName = forms.ModelChoiceField(queryset=Doctor.objects.all() ,empty_label='Select Doctors')
+    department = forms.ModelChoiceField(queryset=Department.objects.all(),empty_label='Select Department')
+    class Meta:
+        model = Appointment
+        fields = ['patientName','age','appointmentDate','address','message','email','mobileNo']
+
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for frm in self.fields.values():
+            frm.widget.attrs['placeholder'] = f'Enter {frm.label}'
+
+class DepartmentForm(forms.ModelForm):
+    class Meta:
+        model=Department
+        fields = ['name']
+

@@ -75,6 +75,8 @@ class Appointment(models.Model):
     department = models.ForeignKey(Department,on_delete=models.CASCADE)
     appointmentBookDate = models.DateField(auto_now_add=True)
     appointmentDate = models.DateField()
+    email = models.EmailField(null=True)
+    mobileNo = models.CharField(max_length=15,null=True)
     message = models.TextField(max_length=500)
     address = models.CharField(max_length=100,null=True)
     status = models.BooleanField(default=False) 

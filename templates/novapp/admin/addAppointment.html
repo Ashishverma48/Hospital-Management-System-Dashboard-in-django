@@ -1,0 +1,90 @@
+{% extends 'novapp/admin/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Add Appointment</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <form method='post'>
+                            {% csrf_token %}
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+									<div class="form-group">
+										<label>Patient Name</label>
+										{% render_field app.patientName class='form-control' %}
+									</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Department</label>
+                                        {% render_field app.department class='select' %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Doctor</label>
+                                      {% render_field app.doctorName class='select'  %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        {% render_field  app.appointmentDate type='date' class="form-control datetimepicker" %}
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Age</label>
+                                        {% render_field app.age class='form-control' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Patient Email</label>
+                                        {% render_field app.email class='form-control' %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Patient Phone Number</label>
+                                        {% render_field app.mobileNo class='form-control' %}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        {% render_field app.address class='form-control' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                {% comment %} <textarea cols="30" rows="4" class="form-control"></textarea> {% endcomment %}
+                                {% render_field app.message cols='30' rows='4' class='form-control' %}
+                            </div>
+                            
+                            <div class="m-t-20 text-center">
+                                <button class="btn btn-primary submit-btn">Create Appointment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+        {% endblock content %}
+   

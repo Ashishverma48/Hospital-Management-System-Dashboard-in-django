@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'novapp/admin/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'novapp/admin/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'novapp/admin/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'novapp/admin/css/bootstrap-datetimepicker.min.css' %}">
     <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -153,7 +154,7 @@
                             <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
                         </li>
                         <li>
-                            <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                            <a href="{% url 'department' %}"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
                         </li>
 						<li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
