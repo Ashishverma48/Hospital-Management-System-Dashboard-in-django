@@ -103,7 +103,7 @@ class AppointmentForm(forms.ModelForm):
         fields = ['patientName','age','appointmentDate','address','message','email','mobileNo']
 
     def __init__(self,*args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)   
         for frm in self.fields.values():
             frm.widget.attrs['placeholder'] = f'Enter {frm.label}'
 
